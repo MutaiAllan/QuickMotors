@@ -48,15 +48,24 @@ function displayToDOM(vehicles) {
 	    <p>Location: ${vehicle.location}</p>
     	<p>Price per month: ${vehicle.payment}</p>
 	    <p>Contact: ${vehicle.owner}</p>
-    	<button id="hire">HIRE VEHICLE!</button>`
+    	<button id="hire">HIRE VEHICLE!</button>
+        <p id="rating"><button id="thumbsup">👍<div id="tuBtn">0</div></button><button id="thumbsdown">👎<div id="tdBtn">0<div></button></p>`
         li.append(ul)
+
+        // Event listeners to reactions.
+        const thumbsUp = document.getElementById("thumbsup")
+        console.log(thumbsUp)
+        const thumbsDown = document.getElementsByName("thumbsdown")
+        thumbsUp.addEventListener('click', (e) => {
+            console.log(e.target)
+        })
         
         // Removing a hired vehicle from the DOM.
         // Event listener to the hire button.
-        var hireBtn = document.querySelector('button')
+        var hireBtn = document.querySelector('#hire')
         hireBtn.addEventListener('click', removeVehicle)
         // Function to remove
-        function removeVehicle (e) {
+        function removeVehicle() {
             fetch(`http://localhost:3000/vehicles/${vehicle.id}`, {
                 method: 'DELETE',
                 headers: {
@@ -65,7 +74,5 @@ function displayToDOM(vehicles) {
             })
             .then(res => res.json())
         }
-
     })
 }
-
