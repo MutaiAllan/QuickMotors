@@ -50,7 +50,7 @@ function displayToDOM(vehicles) {
     	<p>Price per month: ${vehicle.payment}</p>
 	    <p>Contact: ${vehicle.owner}</p>
     	<button id="hire">HIRE VEHICLE!</button>
-        <p id="rating"><button id="tuBtn">👍<div id="thumbsup">44</div></button><button id="tdBtn">👎<div id="thumbsdown">0<div></button></p>`
+        <p id="rating"><button id="tuBtn">👍<div id="thumbsup">0</div></button><button id="tdBtn">👎<div id="thumbsdown">0<div></button></p>`
         // Selecting the hire button.
         ul.querySelector('#hire').addEventListener('click',() => {
             deleteVehicle(vehicle.id)
