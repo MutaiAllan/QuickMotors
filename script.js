@@ -50,7 +50,7 @@ function displayToDOM(vehicles) {
     	<p>Price per month: ${vehicle.payment}</p>
 	    <p>Contact: ${vehicle.owner}</p>
     	<button id="hire">HIRE VEHICLE!</button>
-        <p id="rating"><button id="tuBtn">👍<div id="thumbsup">0</div></button><button id="tdBtn">👎<div id="thumbsdown">0<div></button></p>`
+        <p id="rating"><button id="tuBtn">👍<div id="thumbsup">44</div></button><button id="tdBtn">👎<div id="thumbsdown">0<div></button></p>`
         // Selecting the hire button.
         ul.querySelector('#hire').addEventListener('click',() => {
             deleteVehicle(vehicle.id)
@@ -66,6 +66,19 @@ function displayToDOM(vehicles) {
             })
             .then(res => res.json())
         }
+
+        // Adding the number of thumbs up when the thumbs up button is clicked.
+        ul.querySelector('#tuBtn').addEventListener('click', (e) => {
+            total = parseInt(e.target.textContent)
+            total += 1
+            e.target.textContent = total
+        })
+        // Adding the number of thumb down when the thumbs down button is clicked.
+        ul.querySelector('#tdBtn').addEventListener('click', (e) => {
+            total = parseInt(e.target.textContent)
+            total += 1
+            e.target.textContent = total
+        })
         li.append(ul)
     })
 }
