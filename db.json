@@ -7,6 +7,8 @@
       "payment": "$1450",
       "location": "Mombasa",
       "owner": "+254786904503",
+      "thumbsup": 0,
+      "thumbsdown": 0,
       "id": 1
     },
     {
@@ -16,6 +18,8 @@
       "payment": "$990",
       "location": "Nakuru",
       "owner": "+25434879011",
+      "thumbsup": 0,
+      "thumbsdown": 0,
       "id": 2
     },
     {
@@ -25,7 +29,42 @@
       "payment": "$450",
       "location": "Nyeri",
       "owner": "+254756497022",
+      "thumbsup": 0,
+      "thumbsdown": 0,
       "id": 3
+    },
+    {
+      "name": "Maruti Suzuki Fronx",
+      "image": "https://imgd.aeplcdn.com/370x208/n/cw/ec/130591/fronx-exterior-right-front-three-quarter-108.jpeg?isig=0&q=75",
+      "description": "360 view camera, wireless charger, cruise control,765 millimeters in width and its 1,550 millimeters off the ground",
+      "payment": "$870",
+      "location": "Thika",
+      "owner": "+254756298700",
+      "thumbsup": 0,
+      "thumbsdown": 0,
+      "id": 4
+    },
+    {
+      "name": "Toyota Urban Cruiser Hyryder",
+      "image": "https://imgd.aeplcdn.com/370x208/n/cw/ec/124027/urban-cruiser-hyryder-exterior-right-front-three-quarter-71.jpeg?isig=0&q=75",
+      "description": "1.5-litre petrol engine, output of 91bhp/122Nm",
+      "payment": "$1005",
+      "location": "Nanyuki",
+      "owner": "+25487602431",
+      "thumbsup": 0,
+      "thumbsdown": 0,
+      "id": 5
+    },
+    {
+      "name": "Ford Ecosport",
+      "image": "https://imgd.aeplcdn.com/370x208/cw/ec/40369/Ford-EcoSport-Right-Front-Three-Quarter-159249.jpg?wm=0&q=75",
+      "description": "massive space of 352litres, uel efficiency of 15.9kmpl for the petrol engine while the diesel is claimed to be good for 21.7kmpl",
+      "payment": "$800",
+      "location": "Eldoret",
+      "owner": "+25467259082",
+      "thumbsup": 0,
+      "thumbsdown": 0,
+      "id": 6
     }
   ]
 }
