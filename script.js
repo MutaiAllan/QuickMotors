@@ -13,7 +13,9 @@ function upload (e) {
         description:e.target.Description.value,
         payment:e.target.price.value,
         location:e.target.location.value,
-        owner:e.target.contact.value
+        owner:e.target.contact.value,
+        thumbsup:0,
+        thumbsdown:0
     }
     addToDb(obj)
 }
@@ -50,7 +52,7 @@ function displayToDOM(vehicles) {
     	<p>Price per month: ${vehicle.payment}</p>
 	    <p>Contact: ${vehicle.owner}</p>
     	<button id="hire">HIRE VEHICLE!</button>
-        <p id="rating"><button id="tuBtn">👍<div id="thumbsup">0</div></button><button id="tdBtn">👎<div id="thumbsdown">0<div></button></p>`
+        <p id="rating"><button id="tuBtn">👍<span id="thumbsup">${vehicle.thumbsup}</span></button><button id="tdBtn">👎<span id="thumbsdown">${vehicle.thumbsdown}<span></button></p>`
         // Selecting the hire button.
         ul.querySelector('#hire').addEventListener('click',() => {
             deleteVehicle(vehicle.id)
@@ -68,46 +70,41 @@ function displayToDOM(vehicles) {
         }
 
         // Adding the number of thumbs up when the thumbs up button is clicked.
-        ul.querySelector('#tuBtn').addEventListener('click', (e) => {
-            total = parseInt(e.target.textContent)
-            total += 1
-            e.target.textContent = total
+        ul.querySelector('#tuBtn').addEventListener('click', () => {
+            vehicle.thumbsup += 1
+            ul.querySelector('#thumbsup').textContent = vehicle.thumbsup
+            updateThumbsUp(vehicle)
         })
+        // fetch to update thumbs up in db.
+        async function updateThumbsUp(vehicleObj) {
+            fetch(`${parentURL}/${vehicleObj.id}`, {
+                method:'PATCH',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(vehicleObj)
+            })
+            .then(res => res.json())
+            .then(vehicle => console.log(vehicle))
+        }
         // Adding the number of thumb down when the thumbs down button is clicked.
-        ul.querySelector('#tdBtn').addEventListener('click', (e) => {
-            total = parseInt(e.target.textContent)
-            total += 1
-            e.target.textContent = total
+        ul.querySelector('#tdBtn').addEventListener('click', () => {
+            vehicle.thumbsdown += 1
+            ul.querySelector('#thumbsdown').textContent = vehicle.thumbsdown
+            updateThumbsDown(vehicle)
         })
+        // Updating number of thumb downs in the db using fetch.
+        async function updateThumbsDown(vehicleObj) {
+            fetch(`${parentURL}/${vehicleObj.id}`, {
+                method:'PATCH',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(vehicleObj)
+            })
+            .then(res => res.json())
+            .then(vehicle => console.log(vehicle))
+        }
         li.append(ul)
     })
 }
-
-// Event listeners to reactions.
-// fetch to retrieve data.
-
-async function fetchData() {
-    fetch(parentURL, {
-        method: 'GET',
-        headers: {
-            "Content-Type": 'application/json'
-        }
-    }).then((res) => res.json())
-    .then((data) => {
-        data.forEach(vehicle => {
-            const thumbsUp = document.querySelector("#thumbsup")
-            const thumbsDown = document.getElementsByName("thumbsdown")
-            thumbsUp.addEventListener('click', (e) => {
-            })
-        })
-    })
-    .catch((error) => {
-        console.log(error)
-    })
-}
-fetchData()
-//const thumbsUp = document.getElementById("thumbsup")
-//const thumbsDown = document.getElementsByName("thumbsdown")
-//thumbsUp.addEventListener('click', (e) => {
-    //console.log(e.target)
-//})
